@@ -21,7 +21,7 @@ export default function LeadsHeader({leads, search, setSearch}) {
 						<SelectValue placeholder="All team members" />
 					</SelectTrigger>
 					<SelectContent className="w-[180px]">
-						<SelectItem value="light"><UserRound />All team members</SelectItem>
+						<SelectItem value="light" className="whitespace-nowrap"><UserRound />All team members</SelectItem>
 					</SelectContent>
 				</Select>
 				<Button 

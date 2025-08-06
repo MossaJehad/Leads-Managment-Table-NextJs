@@ -35,7 +35,7 @@ export default function Leads() {
 		<LeadsHeader leads={leads} search={search} setSearch={setSearch}/>
 		{/* Main Content */}
 		<div className="bg-white rounded-md shadow-sm overflow-hidden border">
-			<MyTable leads={currentLeads} search={search} setSearch={setSearch}/>
+			<MyTable leads={currentLeads} setleads={setleads} search={search} setSearch={setSearch}/>
 			
 			<Pagination className="p-2 w-full">
 				<PaginationContent className="w-full flex justify-between items-center">
