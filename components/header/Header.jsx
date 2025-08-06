@@ -8,7 +8,7 @@ export default function Header({ activeTab, setActiveTab }) {
 	return (
 		<header className="px-8">
 			<section className="flex flex-row items-center justify-center align-center gap-4 p-8">
-				<Image src="/Sajilni.webp" width={100} height={100} alt="Sajilni" />
+				<Image src="/Sajilni.webp" width={100} height={100} alt="Sajilni" className="w-24 h-auto" priority/>
 				<SearchInput />
 				<ProfileChip />
 			</section>
