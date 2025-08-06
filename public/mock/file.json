@@ -1,0 +1,218 @@
+[
+	{
+		"name": "Lana Steiner",
+		"company": "Wyman Ltd",
+		"phone": "+1-254-503-1790",
+		"email": "destiny05@example.org",
+		"collectedBy": "cheyenne56@example.org",
+		"notes": "Mentioned interest in future projects"
+	},
+	{
+		"name": "Bruce Richardson",
+		"company": "Herman, Barton and Brown",
+		"phone": "+1-410-233-0074",
+		"email": "elva.fritsch@example.org",
+		"collectedBy": "geovanni.smith@example.net",
+		"notes": "Asked about our pricing plans"
+	},
+	{
+		"name": "Julie Morgan",
+		"company": "Rogers, Rice and Becker",
+		"phone": "+1-508-242-0541",
+		"email": "amir83@example.net",
+		"collectedBy": "delilah.purdy@example.com",
+		"notes": "Met at tech expo"
+	},
+	{
+		"name": "Tracy Hoffman",
+		"company": "Russell-Barton",
+		"phone": "+1-774-829-9882",
+		"email": "mafalda.schuppe@example.org",
+		"collectedBy": "johnson.kayley@example.com",
+		"notes": "Wants demo access"
+	},
+	{
+		"name": "Alexis Carter",
+		"company": "Gibson Inc",
+		"phone": "+1-762-616-1843",
+		"email": "viviane66@example.net",
+		"collectedBy": "emelia92@example.org",
+		"notes": "Follow up in two weeks"
+	},
+	{
+		"name": "Angelica Taylor",
+		"company": "Carter-White",
+		"phone": "+1-920-765-0080",
+		"email": "cristobal.schoen@example.org",
+		"collectedBy": "edwardo06@example.net",
+		"notes": "Looking for partnership"
+	},
+	{
+		"name": "Ronald Wilson",
+		"company": "Anderson-Buckridge",
+		"phone": "+1-239-879-0324",
+		"email": "keely.kulas@example.com",
+		"collectedBy": "jacynthe.olson@example.org",
+		"notes": "Interested in enterprise plan"
+	},
+	{
+		"name": "Cynthia Hayes",
+		"company": "Mills Group",
+		"phone": "+1-217-445-3958",
+		"email": "stanley.koelpin@example.org",
+		"collectedBy": "joel.rau@example.net",
+		"notes": "Met at seminar"
+	},
+	{
+		"name": "Danielle Burns",
+		"company": "Vega LLC",
+		"phone": "+1-786-443-7584",
+		"email": "sasha.herzog@example.org",
+		"collectedBy": "beatrice15@example.com",
+		"notes": "Need pricing details"
+	},
+	{
+		"name": "Eddie Martinez",
+		"company": "Austin, Carter and Weaver",
+		"phone": "+1-720-267-4093",
+		"email": "keira.kutch@example.net",
+		"collectedBy": "ryan.will@example.org",
+		"notes": "Request brochure"
+	},
+	{
+		"name": "Amanda Smith",
+		"company": "Patton Inc",
+		"phone": "+1-413-846-1807",
+		"email": "donna.durgan@example.net",
+		"collectedBy": "darrel.bartoletti@example.com",
+		"notes": "Send PDF proposal"
+	},
+	{
+		"name": "Michael Wood",
+		"company": "Torres-Klein",
+		"phone": "+1-646-813-7393",
+		"email": "kassandra.nader@example.com",
+		"collectedBy": "rickie.nienow@example.com",
+		"notes": "Discussed via phone"
+	},
+	{
+		"name": "Jessica Edwards",
+		"company": "Curtis LLC",
+		"phone": "+1-314-996-6719",
+		"email": "carlos90@example.org",
+		"collectedBy": "eleazar.bruen@example.com",
+		"notes": "Positive response to pitch"
+	},
+	{
+		"name": "Kevin Long",
+		"company": "Ramirez and Sons",
+		"phone": "+1-919-341-5076",
+		"email": "eino.miller@example.org",
+		"collectedBy": "modesto.runolfsson@example.com",
+		"notes": "Schedule demo"
+	},
+	{
+		"name": "Laura Reed",
+		"company": "Fleming PLC",
+		"phone": "+1-321-848-3170",
+		"email": "jared.johnston@example.org",
+		"collectedBy": "schuyler.murazik@example.org",
+		"notes": "Shared contact card"
+	},
+	{
+		"name": "Joshua Peterson",
+		"company": "Wright, Jenkins and Shaw",
+		"phone": "+1-662-809-2964",
+		"email": "lyla17@example.org",
+		"collectedBy": "hildegard80@example.com",
+		"notes": "Referral from partner"
+	},
+	{
+		"name": "Natalie James",
+		"company": "Huff and Sons",
+		"phone": "+1-478-227-1461",
+		"email": "mattie.jacobs@example.net",
+		"collectedBy": "connie.ortiz@example.net",
+		"notes": "Interested in API integration"
+	},
+	{
+		"name": "Jeremy Stewart",
+		"company": "Gibbs, Ray and Peterson",
+		"phone": "+1-234-903-1551",
+		"email": "winston14@example.com",
+		"collectedBy": "graciela57@example.org",
+		"notes": "Requested quote"
+	},
+	{
+		"name": "Sara Nichols",
+		"company": "Simmons, Hopkins and Davis",
+		"phone": "+1-505-486-6352",
+		"email": "jon.jacobs@example.com",
+		"collectedBy": "americo74@example.com",
+		"notes": "Met at startup weekend"
+	},
+	{
+		"name": "Adam Ward",
+		"company": "Sutton PLC",
+		"phone": "+1-909-837-9138",
+		"email": "margie.maggio@example.com",
+		"collectedBy": "kamryn33@example.net",
+		"notes": "Want to integrate CRM"
+	},
+	{
+		"name": "Stephanie Ross",
+		"company": "Wagner LLC",
+		"phone": "+1-720-260-0860",
+		"email": "madelynn40@example.org",
+		"collectedBy": "shayne.gleason@example.net",
+		"notes": "Asked about white-labeling"
+	},
+	{
+		"name": "Jordan Bell",
+		"company": "Rowe PLC",
+		"phone": "+1-214-660-0024",
+		"email": "marge62@example.org",
+		"collectedBy": "lula83@example.net",
+		"notes": "Need customized plan"
+	},
+	{
+		"name": "Megan Parker",
+		"company": "Hunter, Bush and Rowe",
+		"phone": "+1-701-872-9037",
+		"email": "chyna96@example.com",
+		"collectedBy": "fay.schoen@example.org",
+		"notes": "Very engaged"
+	},
+	{
+		"name": "Brian Adams",
+		"company": "Barnes-Moore",
+		"phone": "+1-912-519-4937",
+		"email": "otis.lemke@example.com",
+		"collectedBy": "damaris.kub@example.org",
+		"notes": "Waiting for invoice"
+	},
+	{
+		"name": "Rebecca Bennett",
+		"company": "Myers Group",
+		"phone": "+1-218-745-8570",
+		"email": "sandy44@example.com",
+		"collectedBy": "timmothy56@example.org",
+		"notes": "Showed high interest"
+	},
+	{
+		"name": "Samuel Brooks",
+		"company": "Jackson LLC",
+		"phone": "+1-304-317-2576",
+		"email": "tracy58@example.net",
+		"collectedBy": "roosevelt.heathcote@example.com",
+		"notes": "Follow-up next month"
+	},
+	{
+		"name": "Courtney Powell",
+		"company": "Fisher-Mcgee",
+		"phone": "+1-952-626-5411",
+		"email": "alyce14@example.org",
+		"collectedBy": "ursula32@example.net",
+		"notes": "Send detailed pricing"
+	}
+]

@@ -1,5 +1,3 @@
-import { useState } from "react";
-import Link from "next/link";
 import {
 	UserRound, BellRing, Video, Calendar,
 	Book, FileText, Settings
