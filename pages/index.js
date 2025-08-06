@@ -21,7 +21,7 @@ export default function Home() {
 			<header>
 				<Header activeTab={activeTab} setActiveTab={setActiveTab}/>
 			</header>
-			<main className="p-8 bg-gray-100 min-h-screen">
+			<main className="p-8 bg-gray-100 min-h-screen dark:bg-gray-900 dark:text-white">
 				{activeTab === "Leads" ?
 				<Leads /> :
 				<h1 class="mb-4 text-xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-4xl dark:text-white">{activeTab}</h1>}

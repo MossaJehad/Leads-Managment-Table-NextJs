@@ -7,13 +7,14 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectGroup
 } from "@/components/ui/select";
 import { Button } from '../ui/button';
 
 export default function LeadsHeader({leads, search, setSearch}) {
 	return (
-		<header className="flex items-center justify-between mb-6 p-6 px-8 rounded-md border bg-white">
-			<h1 className="text-2xl font-semibold text-gray-800 whitespace-nowrap">Leads</h1>
+		<header className="flex items-center justify-between mb-6 p-6 px-8 rounded-md border bg-white dark:bg-gray-900 dark:text-white">
+			<h1 className="text-2xl font-semibold text-gray-800 whitespace-nowrap dark:text-white">Leads</h1>
 			<div className="flex gap-4 items-center w-full ml-6">
 				<SearchInput search={search} setSearch={setSearch} />
 				<Select>
@@ -21,7 +22,9 @@ export default function LeadsHeader({leads, search, setSearch}) {
 						<SelectValue placeholder="All team members" />
 					</SelectTrigger>
 					<SelectContent className="w-[180px]">
-						<SelectItem value="light" className="whitespace-nowrap"><UserRound />All team members</SelectItem>
+						<SelectGroup>
+							<SelectItem value="All" className="whitespace-nowrap"><UserRound />All team members</SelectItem>
+						</SelectGroup>
 					</SelectContent>
 				</Select>
 				<Button 

@@ -31,13 +31,13 @@ export default function Leads() {
 	const totalPages = Math.ceil(leads.length / itemsPerPage);
 	
 	return (
-	<>
+	<div>
 		<LeadsHeader leads={leads} search={search} setSearch={setSearch}/>
 		{/* Main Content */}
 		<div className="bg-white rounded-md shadow-sm overflow-hidden border">
 			<MyTable leads={currentLeads} setleads={setleads} search={search} setSearch={setSearch}/>
 			
-			<Pagination className="p-2 w-full">
+			<Pagination className="p-2 w-full dark:bg-gray-900 dark:text-white">
 				<PaginationContent className="w-full flex justify-between items-center">
 				{/* Previous */}
 					<PaginationItem>
@@ -57,7 +57,7 @@ export default function Leads() {
 									onClick={() => setCurrentPage(i + 1)}
 									isActive={currentPage === i + 1}
 									className={`cursor-pointer ${
-										currentPage === i + 1 ? 'bg-gray-200 text-black' : ''
+										currentPage === i + 1 ? 'bg-gray-200 text-black dark:text-white' : ''
 									}`}
 								>
 									{i + 1}
@@ -81,6 +81,6 @@ export default function Leads() {
 				</PaginationContent>
 			</Pagination>
 		</div>
-	</>
+	</div>
   )
 }
