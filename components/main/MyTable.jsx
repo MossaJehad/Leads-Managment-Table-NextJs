@@ -8,6 +8,17 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog"
+
 import { Button } from '../ui/button';
 import { Checkbox } from '../ui/checkbox';
 
@@ -73,12 +84,40 @@ export default function MyTable({ leads, search, setSearch }) {
 								}}>
 								<Copy className="w-4 h-4 text-gray-500 hover:text-black" />
 							</Button>
-							<Button title="Edit" className="cursor-pointer bg-transparent hover:bg-gray-200">
-								<PenLine className="w-4 h-4 text-gray-500 hover:text-black" />
-							</Button>
-							<Button title="Delete" className="cursor-pointer bg-transparent hover:bg-red-200">
-								<Trash2 className="w-4 h-4 text-red-500 hover:text-red-700" />
-							</Button>
+							<Dialog>
+								<DialogTrigger>
+									<Button title="Edit" className="cursor-pointer bg-transparent hover:bg-gray-200">
+										<PenLine className="w-4 h-4 text-gray-500 hover:text-black" />
+									</Button>
+								</DialogTrigger>
+								<DialogContent>
+									<DialogHeader>
+										<DialogTitle>Editing row</DialogTitle>
+									</DialogHeader>
+									
+								</DialogContent>
+							</Dialog>
+							<Dialog>
+								<DialogTrigger>
+									<Button title="Delete" className="cursor-pointer bg-transparent hover:bg-red-200">
+										<Trash2 className="w-4 h-4 text-red-500 hover:text-red-700" />
+									</Button>
+								</DialogTrigger>
+								<DialogContent>
+									<DialogHeader>
+										<DialogTitle>Are you absolutely sure?</DialogTitle>
+										<DialogDescription>
+											This action cannot be undone. This will permanently delete this data.
+										</DialogDescription>
+									</DialogHeader>
+									<DialogFooter>
+										<DialogClose asChild>
+											<Button variant="outline" className="cursor-pointer">Cancel</Button>
+										</DialogClose>
+											<Button type="submit" className="bg-red-700 hover:bg-red-800 cursor-pointer">Delete</Button>
+									</DialogFooter>
+								</DialogContent>
+							</Dialog>
 						</TableCell>
 					</TableRow>
 				))}
