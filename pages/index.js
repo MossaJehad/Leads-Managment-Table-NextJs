@@ -26,9 +26,7 @@ export default function Home() {
 				<Leads /> :
 				<h1 class="mb-4 text-xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-4xl dark:text-white">{activeTab}</h1>}
 			</main>
-			<footer>
-				
-			</footer>
+			
 		</>
 	)
 }

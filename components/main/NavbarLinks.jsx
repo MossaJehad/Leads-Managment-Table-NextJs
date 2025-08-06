@@ -15,7 +15,7 @@ const nLinks = [
 
 export default function NavbarLinks({ activeTab, setActiveTab }) {
 	return (
-		<nav className="flex flex-row items-center gap-12">
+		<nav className="flex items-center md:gap-8 gap-4 flex-wrap">
 			{nLinks.map((link) => {
 				const Icon = link.icon;
 				const isActive = activeTab === link.label;

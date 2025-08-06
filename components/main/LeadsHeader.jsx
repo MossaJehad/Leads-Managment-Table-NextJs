@@ -14,8 +14,8 @@ import { Button } from '../ui/button';
 export default function LeadsHeader({leads, search, setSearch}) {
 	return (
 		<header className="flex items-center justify-between mb-6 p-6 px-8 rounded-md border bg-white dark:bg-gray-900 dark:text-white">
-			<h1 className="text-2xl font-semibold text-gray-800 whitespace-nowrap dark:text-white">Leads</h1>
-			<div className="flex gap-4 items-center w-full ml-6">
+			<div className="flex flex-wrap md:flex-nowrap gap-2 md:gap-4 items-center w-full ml-6">
+				<h1 className="text-xl md:text-2xl font-semibold text-gray-800 whitespace-nowrap dark:text-white">Leads</h1>
 				<SearchInput search={search} setSearch={setSearch} />
 				<Select>
 					<SelectTrigger className="w-[180px]">
@@ -28,7 +28,8 @@ export default function LeadsHeader({leads, search, setSearch}) {
 					</SelectContent>
 				</Select>
 				<Button 
-				className="flex items-center gap-2 bg-purple-600 text-white px-3 py-2 whitespace-nowrap rounded-md text-sm hover:bg-purple-700 cursor-pointer"
+				className="flex items-center gap-2 bg-purple-600 text-white px-3 py-2 whitespace-nowrap rounded-md
+				text-sm hover:bg-purple-700 cursor-pointer"
 				onClick={() => {
 					const rows = [
 							["Name", "Company", "Phone Number", "Email", "Collected by", "Notes"],
