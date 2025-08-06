@@ -17,18 +17,18 @@ export default function LeadsHeader({leads, search, setSearch}) {
 			<div className="flex flex-wrap md:flex-nowrap gap-2 md:gap-4 items-center w-full ml-6">
 				<h1 className="text-xl md:text-2xl font-semibold text-gray-800 whitespace-nowrap dark:text-white">Leads</h1>
 				<SearchInput search={search} setSearch={setSearch} />
-				<Select>
-					<SelectTrigger className="w-[180px]">
+				<Select className="w-full md:w-auto">
+					<SelectTrigger className="md:w-[180px] w-full">
 						<SelectValue placeholder="All team members" />
 					</SelectTrigger>
-					<SelectContent className="w-[180px]">
+					<SelectContent className="md:w-[180px] w-full">
 						<SelectGroup>
 							<SelectItem value="All" className="whitespace-nowrap"><UserRound />All team members</SelectItem>
 						</SelectGroup>
 					</SelectContent>
 				</Select>
 				<Button 
-				className="flex items-center gap-2 bg-purple-600 text-white px-3 py-2 whitespace-nowrap rounded-md
+				className="flex w-full md:w-auto items-center gap-2 bg-purple-600 text-white px-3 py-2 whitespace-nowrap rounded-md
 				text-sm hover:bg-purple-700 cursor-pointer"
 				onClick={() => {
 					const rows = [
