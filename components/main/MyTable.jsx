@@ -15,8 +15,6 @@ DialogDescription,
 DialogHeader,
 DialogFooter,
 DialogTitle,
-DialogTrigger,
-DialogClose,
 } from "@/components/ui/dialog"
 import { Button } from '../ui/button';
 import { Checkbox } from '../ui/checkbox';
@@ -28,9 +26,7 @@ export default function MyTable({ leads, setLeads, search, setSearch }) {
 	const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 	const [leadToDelete, setLeadToDelete] = useState(null);
-
 	if (!Array.isArray(leads)) return <p className="text-xl p-4 text-gray-500">Loading...</p>;
-	
 	const filteredLeads = search ? leads.filter((lead) =>
 		lead.name.toLowerCase().includes(search.toLowerCase()) ||
 		lead.company.toLowerCase().includes(search.toLowerCase()) ||
@@ -46,26 +42,21 @@ export default function MyTable({ leads, setLeads, search, setSearch }) {
 	];
 
 	const handleEditClick = (lead, index) => {
-		// Create a copy of the lead with an index for identification
 		setEditingLead({ ...lead, originalIndex: index });
 		setIsEditDialogOpen(true);
 	};
 
 	const handleSaveChanges = () => {
 		if (!editingLead) return;
-
 		setLeads(prev =>
 			prev.map((lead, index) => {
-				// Use originalIndex to identify which lead to update
 				if (index === editingLead.originalIndex) {
-					// Remove the originalIndex before saving
 					const { originalIndex, ...updatedLead } = editingLead;
 					return updatedLead;
 				}
 				return lead;
 			})
 		);
-		
 		toast.success("Lead updated!");
 		setEditingLead(null);
 		setIsEditDialogOpen(false);
@@ -166,8 +157,6 @@ export default function MyTable({ leads, setLeads, search, setSearch }) {
 					))}
 				</TableBody>
 			</Table>
-
-			{/* Edit Dialog */}
 			<Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
 				<DialogContent className="dark:bg-gray-900">
 					<DialogHeader>
@@ -196,8 +185,7 @@ export default function MyTable({ leads, setLeads, search, setSearch }) {
 							onClick={() => {
 								setEditingLead(null);
 								setIsEditDialogOpen(false);
-							}}
-						>
+						}}>
 							Cancel
 						</Button>
 						<Button 
@@ -210,8 +198,6 @@ export default function MyTable({ leads, setLeads, search, setSearch }) {
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>
-
-			{/* Delete Dialog */}
 			<Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
 				<DialogContent className="dark:bg-gray-900">
 					<DialogHeader>
@@ -227,8 +213,7 @@ export default function MyTable({ leads, setLeads, search, setSearch }) {
 							onClick={() => {
 								setLeadToDelete(null);
 								setIsDeleteDialogOpen(false);
-							}}
-						>
+						}}>
 							Cancel
 						</Button>
 						<Button 

@@ -22,4 +22,3 @@ export default function Header({ activeTab, setActiveTab }) {
 		</header>
 	);
 }
-

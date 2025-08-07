@@ -2,12 +2,12 @@ import React from 'react';
 import SearchInput from '../ui/SearchInput';
 import {CloudDownload, UserRound} from 'lucide-react';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  SelectGroup
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+	SelectGroup
 } from "@/components/ui/select";
 import { Button } from '../ui/button';
 
@@ -42,10 +42,8 @@ export default function LeadsHeader({leads, search, setSearch}) {
 								lead.notes
 							])
 						];
-
 					let csvContent = "data:text/csv;charset=utf-8,"
 						+ rows.map(e => e.join(",")).join("\n");
-					
 					const encodedUri = encodeURI(csvContent);
 					const link = document.createElement("a");
 					link.setAttribute("href", encodedUri);
@@ -53,8 +51,7 @@ export default function LeadsHeader({leads, search, setSearch}) {
 					document.body.appendChild(link);
 					link.click();
 					document.body.removeChild(link);
-				}}
-				>
+				}}>
 					<CloudDownload />
 					<span>Export Data</span>
 				</Button>
