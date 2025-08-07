@@ -9,25 +9,28 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
-  DialogTrigger,
-  DialogClose,
+Dialog,
+DialogContent,
+DialogDescription,
+DialogHeader,
+DialogFooter,
+DialogTitle,
+DialogTrigger,
+DialogClose,
 } from "@/components/ui/dialog"
 import { Button } from '../ui/button';
 import { Checkbox } from '../ui/checkbox';
 import { Toaster } from '../ui/sonner';
 import { toast } from 'sonner';
 
-export default function MyTable({ leads, setleads, search, setSearch }) {
-	const [selectedLead, setSelectedLead] = useState(null);
-	const [isDialogOpen, setIsDialogOpen] = useState(false);
+export default function MyTable({ leads, setLeads, search, setSearch }) {
+	const [editingLead, setEditingLead] = useState(null);
+	const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+	const [leadToDelete, setLeadToDelete] = useState(null);
 
 	if (!Array.isArray(leads)) return <p className="text-xl p-4 text-gray-500">Loading...</p>;
+	
 	const filteredLeads = search ? leads.filter((lead) =>
 		lead.name.toLowerCase().includes(search.toLowerCase()) ||
 		lead.company.toLowerCase().includes(search.toLowerCase()) ||
@@ -41,6 +44,46 @@ export default function MyTable({ leads, setleads, search, setSearch }) {
 		{ label: "Email", key: "email" },
 		{ label: "Notes", key: "notes" },
 	];
+
+	const handleEditClick = (lead, index) => {
+		// Create a copy of the lead with an index for identification
+		setEditingLead({ ...lead, originalIndex: index });
+		setIsEditDialogOpen(true);
+	};
+
+	const handleSaveChanges = () => {
+		if (!editingLead) return;
+
+		setLeads(prev =>
+			prev.map((lead, index) => {
+				// Use originalIndex to identify which lead to update
+				if (index === editingLead.originalIndex) {
+					// Remove the originalIndex before saving
+					const { originalIndex, ...updatedLead } = editingLead;
+					return updatedLead;
+				}
+				return lead;
+			})
+		);
+		
+		toast.success("Lead updated!");
+		setEditingLead(null);
+		setIsEditDialogOpen(false);
+	};
+
+	const handleDeleteClick = (leadIndex) => {
+		setLeadToDelete(leadIndex);
+		setIsDeleteDialogOpen(true);
+	};
+
+	const handleDeleteConfirm = () => {
+		if (leadToDelete !== null) {
+			setLeads(prev => prev.filter((_, index) => index !== leadToDelete));
+			toast.success("Lead Deleted");
+		}
+		setLeadToDelete(null);
+		setIsDeleteDialogOpen(false);
+	};
 	
 	return (
 		<div className='dark:bg-gray-900'>
@@ -102,84 +145,102 @@ export default function MyTable({ leads, setleads, search, setSearch }) {
 									}}>
 									<Copy className="w-4 h-4 text-gray-500 hover:text-black" />
 								</Button>
-								<Dialog>
-									<DialogTrigger title="Edit" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-9 px-4 py-2 has-[>svg]:px-3 cursor-pointer bg-transparent hover:bg-gray-200"
-									onClick={() => setSelectedLead(lead)}
-									>
-											<PenLine className="w-4 h-4 text-gray-500 hover:text-black" />
-									</DialogTrigger>
-									<DialogContent className="dark:bg-gray-900">
-										<DialogHeader>
-											<DialogTitle>Editing row</DialogTitle>
-											{fields.map(({ label, key }) => (
-												<div key={key} className="mb-4">
-													<label htmlFor={key} className="block font-medium mb-1">
-														{label}
-													</label>
-													<input
-														id={key}
-														type="text"
-														value={selectedLead?.[key] || ""}
-														onChange={(e) =>
-															setSelectedLead({ ...selectedLead, [key]: e.target.value })
-														}
-														className="border p-2 w-full rounded"
-													/>
-												</div>
-											))}
-											<DialogClose asChild>
-												<Button variant="outline" className="cursor-pointer">Cancel</Button>
-											</DialogClose>
-											<DialogClose asChild>
-												<Button type="submit" className="bg-green-600 hover:bg-green-700 cursor-pointer"
-													onClick = {() => {
-														if (!selectedLead) return;
+								
+								<Button 
+									title="Edit" 
+									className="cursor-pointer bg-transparent hover:bg-gray-200"
+									onClick={() => handleEditClick(lead, i)}
+								>
+									<PenLine className="w-4 h-4 text-gray-500 hover:text-black" />
+								</Button>
 
-														setleads(prev =>
-															prev.map(lead =>
-																lead.id === selectedLead.id ? selectedLead : lead
-															)
-														);
-														toast.success("Lead updated!");
-													}}>
-														Save Changes
-													</Button>
-											</DialogClose>
-										</DialogHeader>
-									</DialogContent>
-								</Dialog>
-								<Dialog>
-									<DialogTrigger title="Delete" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-9 px-4 py-2 has-[>svg]:px-3 cursor-pointer bg-transparent hover:bg-red-200">
-											<Trash2 className="w-4 h-4 text-red-500 hover:text-red-700" />
-									</DialogTrigger>
-									<DialogContent className="dark:bg-gray-900">
-										<DialogHeader>
-											<DialogTitle>Are you absolutely sure?</DialogTitle>
-											<DialogDescription>
-												This action cannot be undone. This will permanently delete this data.
-											</DialogDescription>
-										</DialogHeader>
-										<DialogFooter>
-											<DialogClose asChild>
-												<Button variant="outline" className="cursor-pointer">Cancel</Button>
-											</DialogClose>
-											<DialogClose asChild>
-												<Button type="submit" className="bg-red-700 hover:bg-red-800 cursor-pointer dark:text-white"
-												onClick = {() => {
-													setleads(prev => prev.filter((_, index) => index != i));
-													toast.success("Lead Deleted");
-												}}>
-													Delete
-												</Button>
-											</DialogClose>
-										</DialogFooter>
-									</DialogContent>
-								</Dialog>
+								<Button 
+									title="Delete" 
+									className="cursor-pointer bg-transparent hover:bg-red-200"
+									onClick={() => handleDeleteClick(i)}
+								>
+									<Trash2 className="w-4 h-4 text-red-500 hover:text-red-700" />
+								</Button>
 							</TableCell>
 						</TableRow>
 					))}
 				</TableBody>
 			</Table>
+
+			{/* Edit Dialog */}
+			<Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
+				<DialogContent className="dark:bg-gray-900">
+					<DialogHeader>
+						<DialogTitle>Editing row</DialogTitle>
+						{fields.map(({ label, key }) => (
+							<div key={key} className="mb-4">
+								<label htmlFor={key} className="block font-medium mb-1">
+									{label}
+								</label>
+								<input
+									id={key}
+									type="text"
+									value={editingLead?.[key] || ""}
+									onChange={(e) =>
+										setEditingLead({ ...editingLead, [key]: e.target.value })
+									}
+									className="border p-2 w-full rounded"
+								/>
+							</div>
+						))}
+					</DialogHeader>
+					<DialogFooter>
+						<Button 
+							variant="outline" 
+							className="cursor-pointer"
+							onClick={() => {
+								setEditingLead(null);
+								setIsEditDialogOpen(false);
+							}}
+						>
+							Cancel
+						</Button>
+						<Button 
+							type="submit" 
+							className="bg-green-600 hover:bg-green-700 cursor-pointer"
+							onClick={handleSaveChanges}
+						>
+							Save Changes
+						</Button>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
+
+			{/* Delete Dialog */}
+			<Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+				<DialogContent className="dark:bg-gray-900">
+					<DialogHeader>
+						<DialogTitle>Are you absolutely sure?</DialogTitle>
+						<DialogDescription>
+							This action cannot be undone. This will permanently delete this data.
+						</DialogDescription>
+					</DialogHeader>
+					<DialogFooter>
+						<Button 
+							variant="outline" 
+							className="cursor-pointer"
+							onClick={() => {
+								setLeadToDelete(null);
+								setIsDeleteDialogOpen(false);
+							}}
+						>
+							Cancel
+						</Button>
+						<Button 
+							type="submit" 
+							className="bg-red-700 hover:bg-red-800 cursor-pointer dark:text-white"
+							onClick={handleDeleteConfirm}
+						>
+							Delete
+						</Button>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
 		</div>
 	);
 }
