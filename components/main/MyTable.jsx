@@ -7,7 +7,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@/components/ui/table";
+} from "@/components/ui/table"; // use data table
 import {
 Dialog,
 DialogContent,
@@ -41,6 +41,7 @@ export default function MyTable({ leads, setLeads, search, setSearch }) {
 		{ label: "Notes", key: "notes" },
 	];
 
+	// Editing without the state
 	const handleEditClick = (lead, index) => {
 		setEditingLead({ ...lead, originalIndex: index });
 		setIsEditDialogOpen(true);
@@ -48,6 +49,7 @@ export default function MyTable({ leads, setLeads, search, setSearch }) {
 
 	const handleSaveChanges = () => {
 		if (!editingLead) return;
+		// Don't need to use prev
 		setLeads(prev =>
 			prev.map((lead, index) => {
 				if (index === editingLead.originalIndex) {
@@ -66,7 +68,7 @@ export default function MyTable({ leads, setLeads, search, setSearch }) {
 		setLeadToDelete(leadIndex);
 		setIsDeleteDialogOpen(true);
 	};
-
+	// id instead of index
 	const handleDeleteConfirm = () => {
 		if (leadToDelete !== null) {
 			setLeads(prev => prev.filter((_, index) => index !== leadToDelete));
@@ -157,6 +159,7 @@ export default function MyTable({ leads, setLeads, search, setSearch }) {
 					))}
 				</TableBody>
 			</Table>
+			{/*// One dialog is enough*/}
 			<Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
 				<DialogContent className="dark:bg-gray-900">
 					<DialogHeader>

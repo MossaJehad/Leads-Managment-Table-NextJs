@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from '../ui/button';
 
+// instead of setSearch use debounce or setState inside search input, and base on the return value trigger
 export default function LeadsHeader({leads, search, setSearch}) {
 	return (
 		<header className="flex items-center justify-between mb-6 p-6 px-8 rounded-md border bg-white dark:bg-gray-900 dark:text-white">
@@ -30,7 +31,7 @@ export default function LeadsHeader({leads, search, setSearch}) {
 				<Button 
 				className="flex w-full md:w-auto items-center gap-2 bg-purple-600 text-white px-3 py-2 whitespace-nowrap rounded-md
 				text-sm hover:bg-purple-700 cursor-pointer"
-				onClick={() => {
+				onClick={() => { // make it a func
 					const rows = [
 							["Name", "Company", "Phone Number", "Email", "Collected by", "Notes"],
 							...leads.map(lead => [

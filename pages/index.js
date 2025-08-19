@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
-	const [activeTab, setActiveTab] = useState("Leads");
+	const [activeTab, setActiveTab] = useState("Leads"); // Use route instead \ Tabs from shadcn - for better perf
 
 	return (
 		<>
