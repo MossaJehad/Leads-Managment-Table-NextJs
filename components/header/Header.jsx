@@ -8,7 +8,7 @@ export default function Header({ activeTab, setActiveTab }) {
 	return (
 		<header className="px-8 dark:bg-gray-900 dark:text-white">
 			<section className="flex flex-wrap md:flex-nowrap flex-row items-center justify-center align-center gap-4 p-8">
-				<Image src="/Sajilni.webp" width={100} height={100} alt="Sajilni" className="w-24 h-auto" priority/>
+				<Image src="/logo.png" width={200} height={200} style={{ height: "50px", width: "auto" }} alt="logo" className="w-24 h-auto" priority/>
 				<SearchInput />
 				<ProfileChip />
 			</section>
